@@ -11,13 +11,17 @@ import CoreMotion
 
 class ViewController: UIViewController {
     
+    @IBOutlet weak var testLabel: UILabel!
+    
     //Create instance of CMPedometer library
     let pedometer = CMPedometer()
     let activityManager = CMMotionActivityManager()
     
+    var globalRandomNumber: Int = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-                
+                                
             //Check if the device is able to count steps i.e does it have the motion coprocessor
             if CMPedometer.isStepCountingAvailable() {
                 let calendar = Calendar.current
@@ -28,19 +32,25 @@ class ViewController: UIViewController {
 
                 pedometer.startUpdates(from: Date()) { (data, error) in
                     print(data?.numberOfSteps)
-
+                    
+                    let num: Int = 5
+                    
+                    // self.globalRandomNumber = data?.numberOfSteps as! Int
+                    self.globalRandomNumber = num
+                    
+                    self.doLabelChange()
+                    
                 }
 
             }
-        
-        
-        
-        
-        
-        
-        
-        
-        
+    }
+    
+    
+    func doLabelChange() {
+        DispatchQueue.main.async {
+            print("Called")
+            self.testLabel.text = String(self.globalRandomNumber)
+        }
     }
     
    
