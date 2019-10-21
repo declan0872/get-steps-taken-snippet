@@ -4,7 +4,7 @@ In this snippet, I use the ```CoreMotion``` library and ```CMPedometer``` to out
 
 ## Tech Specs
 
-- iOS 12.2
+- Supports iOS 12 and iOS 13
 - Swift 5
 
 ## Instructions
